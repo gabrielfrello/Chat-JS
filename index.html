@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Chat</title>
+    <link rel="stylesheet" href="default.css" />
+</head>
+<body>
+    <div class="chat-box">
+        <table cellspacing="0" border="1">
+            <h1>ATENDIMENTO ONLINE</h1>
+            <div class="messages-attendant">
+                <div class="message attendant1">
+                    <p>Atendente diz:</p>
+                    <span>Olá, seja bem vindo ao nosso atendimento online!</span>
+                </div>
+                <div class="message attendant2">
+                    <p>Atendente diz:</p>
+                    <span>Do que você precisa?</span>
+                </div>
+            </div>
+            <div class="messages-user" id="user-messages">
+            </div>
+                <div class="message-box">
+                    <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+                    <button id="send-button">ENVIAR</button>
+                </div>
+            <div class="row-button">
+                <table>
+            </div>    
+        </table>
+    </div>    
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', function() {
+            var userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                var userMessagesDiv = document.getElementById('user-messages');
+                var newMessageDiv = document.createElement('div');
+                newMessageDiv.classList.add('message');
+                newMessageDiv.classList.add('user');
+                newMessageDiv.innerHTML = '<p>Você diz:</p><span>' + userInput + '</span>';
+                userMessagesDiv.appendChild(newMessageDiv);
+                document.getElementById('user-input').value = '';
+                userMessagesDiv.scrollTop = userMessagesDiv.scrollHeight;
+                document.getElementById('message-box').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
